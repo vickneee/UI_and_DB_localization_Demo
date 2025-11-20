@@ -33,7 +33,7 @@ public class HelloController {
             String key = keyNameField == null ? "" : keyNameField.getText();
             String translation = translationField == null ? "" : translationField.getText();
             String langCode = getLanguageCode(languageSelector == null ? "English" : languageSelector.getValue());
-            saveResult(key, translation, langCode);
+            saveResult(key, langCode, translation);
         });
     }
 
