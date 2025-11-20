@@ -51,7 +51,7 @@ pipeline {
                     withSonarQubeEnv("${env.SONARQUBE_SERVER}") {
                         // First line is Mac local sonar-scanner path -> use correct path,
                         // Sixth line use -Dsonar.login instead token (newer version). Test what works
-                        // Local sonar scanner needs to be running in background
+                        // Local SonarQube needs to be running in background
                         // Updated comment, tested Jenkinsfile with SonarQube without sonar-project.properties file, working well
                         sh """
                             /usr/local/sonarscanner/bin/sonar-scanner \
