@@ -54,9 +54,9 @@ pipeline {
                         // Local sonar scanner needs to be running in background
                         sh """
                             /usr/local/sonarscanner/bin/sonar-scanner \
-                            -Dsonar.projectKey=Week5_SonarQube \
+                            -Dsonar.projectKey=SonarQube_UI_and_DB \
                             -Dsonar.sources=src \
-                            -Dsonar.projectName=Week5_SonarQube \
+                            -Dsonar.projectName=SonarQube_UI_and_DB \
                             -Dsonar.host.url=http://localhost:9000 \
                             -Dsonar.login=${env.SONAR_TOKEN} \
                             -Dsonar.java.binaries=target/classes \
