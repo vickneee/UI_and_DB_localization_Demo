@@ -5,6 +5,8 @@ pipeline {
     environment {
             PATH = "/usr/local/bin:${env.PATH}"
 
+            SONARQUBE_SERVER = 'SonarQubeServer' // SonarQube server name in Jenkins config
+            SONAR_TOKEN = 'SONAR_TOKEN' // SONAR_TOKEN=ID in Jenkins credentials, using Secret text as Secret=your_sonar_token
             // Define Docker Hub credentials ID
             DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
             // Define Docker Hub repository name
@@ -40,6 +42,27 @@ pipeline {
         stage('Code Coverage') {
             steps {
                 sh 'mvn jacoco:report'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv("${env.SONARQUBE_SERVER}") {
+                        // First line is Mac local sonar-scanner path -> use correct path,
+                        // Sixth line use -Dsonar.login instead token (newer version). Test what works
+                        // Local sonar scanner needs to be running in background
+                        sh """
+                            /usr/local/sonarscanner/bin/sonar-scanner \
+                            -Dsonar.projectKey=Week5_SonarQube \
+                            -Dsonar.sources=src \
+                            -Dsonar.projectName=Week5_SonarQube \
+                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.login=${env.SONAR_TOKEN} \
+                            -Dsonar.java.binaries=target/classes \
+                        """
+                    }
+                }
             }
         }
 
