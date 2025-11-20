@@ -52,6 +52,7 @@ pipeline {
                         // First line is Mac local sonar-scanner path -> use correct path,
                         // Sixth line use -Dsonar.login instead token (newer version). Test what works
                         // Local sonar scanner needs to be running in background
+                        // Update Jenkinsfile, to test SonarQube without properties file, working well
                         sh """
                             /usr/local/sonarscanner/bin/sonar-scanner \
                             -Dsonar.projectKey=SonarQube_UI_and_DB \
