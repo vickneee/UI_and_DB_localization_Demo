@@ -6,9 +6,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-import java.util.Locale;
-import java.util.Map;
-
 import static bmi.bmicalculatormysql.TranslationResultService.saveResult;
 
 public class HelloController {
