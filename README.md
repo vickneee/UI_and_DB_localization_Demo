@@ -2,8 +2,8 @@
 
 ![Jenkins.png](Jenkins.png)
 
-![Db.png](Db.png)
-
 ![SonarQube.png](SonarQube.png)
+
+![Db.png](Db.png)
 
 
